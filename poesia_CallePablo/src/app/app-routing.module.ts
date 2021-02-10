@@ -10,6 +10,14 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  },
+  {
+    path: 'crear-poesia',
+    loadChildren: () => import('./crear-poesia/crear-poesia.module').then( m => m.CrearpoesiaPageModule)
+  },
+  {
+    path: 'listar',
+    loadChildren: () => import('./inicio/inicio.module').then( m => m.ListarPageModule)
   }
 ];
 
