@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Poesias Privada</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item-sliding *ngFor="let marker of poesias | async">
+    <ion-item>
+        <ion-label>
+            <Strong>Autor :</Strong><h2> {{marker.autor}}</h2><br>
+            <Strong>Poesia :</Strong><h2> {{marker.poesia}}</h2><br>
+            <Strong>Fecha :</Strong><h2> {{marker.fecha}}</h2><br>
+            <Strong>Imagen :</Strong><h2> {{marker.imagen}}</h2><br>
+        </ion-label>
+    </ion-item>
+  </ion-item-sliding>
+
+
+
+  <ion-item *ngFor="let po of poesias | async">
+    <ion-avatar slot="start">
+        <img src={{po.imagen}}>
+    </ion-avatar>
+    <ion-label (click)="editarContactoById(contacto.uid)">
+        <h2>{{po.autor}}</h2>
+        <h3>{{po.poesia}}</h3>
+        <h3>{{po.fecha}}</h3>
+        <h3>{{po.imagen}}</h3>        
+    </ion-label>
+
+    
+  <div>
+    <ion-item>
+      <ion-label position="floating">Comentario</ion-label>
+      <ion-checkbox color="primary" [(ngModel)]="worked"></ion-checkbox>
+    </ion-item>
+  
+    <ion-item *ngIf="worked">
+      <ion-label position="floating">Autor </ion-label>
+      <ion-input [(ngModel)]="comentario.autor" placeholder='{{po.autor}}'></ion-input>
+  
+      <ion-label position="floating">Poesia </ion-label>
+      <ion-input [(ngModel)]="comentario.poesiaD" placeholder='{{po.poesia}}' ></ion-input>
+  
+      <ion-label position="floating">Agregar Descripcion </ion-label>
+      <ion-input [(ngModel)]="comentario.descripcion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button color="dark" (click)="guardarComentario()">Enviar Comentario</ion-button>
+    </ion-item>
+    </div>
+    
+  </ion-item>
+
+
+</ion-content>

@@ -1,10 +1,7 @@
-export class poesia{
-
+export class Poesia{
     uid: string;
-    nombre: string;
-    genero: string;
-    productor: string;
-    temporadas: string;
-    foto: string;
-    espaniol: boolean;
+    autor: string;
+    poesia: string;
+    fecha: string;
+    imagen: any;
 }

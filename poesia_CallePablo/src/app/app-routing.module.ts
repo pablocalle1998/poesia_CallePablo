@@ -12,12 +12,24 @@ const routes: Routes = [
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   },
   {
-    path: 'crear-poesia',
-    loadChildren: () => import('./crear-poesia/crear-poesia.module').then( m => m.CrearpoesiaPageModule)
+    path: 'registrar',
+    loadChildren: () => import('./registrar/registrar.module').then( m => m.RegistrarPageModule)
   },
   {
-    path: 'listar',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.ListarPageModule)
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'inicio-poesias',
+    loadChildren: () => import('./inicio-poesias/inicio-poesias.module').then( m => m.InicioPoesiasPageModule)
+  },
+  {
+    path: 'registrar-poesia',
+    loadChildren: () => import('./registrar-poesia/registrar-poesia.module').then( m => m.RegistrarPoesiaPageModule)
+  },
+  {
+    path: 'poesias-privada',
+    loadChildren: () => import('./poesias-privada/poesias-privada.module').then( m => m.PoesiasPrivadaPageModule)
   }
 ];
 

@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Catalogo de Poemas =</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item-sliding *ngFor="let marker of poesias | async">
+    <ion-item>
+        <ion-label>
+            <Strong>Autor :</Strong><h2> {{marker.autor}}</h2><br>
+            <Strong>Poesia :</Strong><h2> {{marker.poesia}}</h2><br>
+            <Strong>Fecha :</Strong><h2> {{marker.fecha}}</h2><br>
+            <Strong>Imagen :</Strong><h2> {{marker.imagen}}</h2><br>
+        </ion-label>
+    </ion-item>
+  </ion-item-sliding>
+
+
+
+  <ion-item *ngFor="let po of poesias | async">
+    <ion-avatar slot="start">
+        <img src={{po.imagen}}>
+    </ion-avatar>
+    <ion-label (click)="editarContactoById(contacto.uid)">
+        <h2>{{po.autor}}</h2>
+        <h3>{{po.poesia}}</h3>
+        <h3>{{po.fecha}}</h3>
+        <h3>{{po.imagen}}</h3>        
+    </ion-label>
+  </ion-item>
+
+  <ion-card>
+    <h2>Comentarios de poemas:</h2>
+    <ion-item-sliding *ngFor="let marker of comentarios | async">
+      <ion-item>
+          <ion-label>
+              <Strong>Autor :</Strong><h2> {{marker.autor}}</h2><br>
+              <Strong>Poesia :</Strong><h2> {{marker.poesiaD}}</h2><br>
+              <Strong>Descripcion :</Strong><h2> {{marker.descripcion}}</h2><br>
+          </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-card>
+
+
+</ion-content>

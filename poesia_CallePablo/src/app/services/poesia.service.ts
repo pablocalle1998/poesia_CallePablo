@@ -1,33 +1,26 @@
 import { Injectable } from '@angular/core';
-import { poesia } from '../model/poesia';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore'
 import { Observable } from 'rxjs';
-
+import { Poesia } from '../model/Poesia';
 
 @Injectable({
   providedIn: 'root'
 })
-export class poesiasService {
+export class PoesiaService {
 
   constructor(public afs: AngularFirestore) { }
 
-
-  savepoesia(poesia : poesia){
-
-    const refpoesia = this.afs.collection("poesias");
-
-    if(poesia.uid==null){
-      poesia.uid = this.afs.createId();
-    } 
-
-    refpoesia.doc(poesia.uid).set(Object.assign({}, poesia), {merge: true})
-
-
+  savePoesias(Poesia: Poesia){
+    const refContacto = this.afs.collection("poesias");
+    if(Poesia.uid==null){
+      Poesia.uid = this.afs.createId();
+    }
+    refContacto.doc(Poesia.uid).set(Object.assign({}, Poesia), { merge: true})
   }
 
-
-  getpoesias(): Observable<any[]>{
-
-    return this.afs.collection("poesias").valueChanges();
+  getPoesias(): Observable<any>{
+    const datos= this.afs.collection("poesias").valueChanges();
+    return datos;
   }
+
 }
